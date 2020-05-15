@@ -21,7 +21,9 @@ for conf in confs:
     conf_info = re.search('Volume \d*: (.*)', conf_info).group(1).split(',')
     conf_name = conf_info[0].strip()
     date = conf_info[1].strip()
+
     print(conf_name, date)
+
     papers = soup.findAll('div', class_='paper')
     all_info = []
     for paper in papers:
@@ -44,6 +46,7 @@ for conf in confs:
             if key in mapping:
                 info[mapping[key]] = i['href']
         all_info.append(info)
+
     parsed_conf_info = {
         'conf_name': conf_name,
         'date': date,
